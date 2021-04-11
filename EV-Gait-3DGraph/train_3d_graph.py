@@ -82,7 +82,7 @@ if __name__ == '__main__':
     # test
     test_data_aug = T.Compose([T.Cartesian(cat=False), T.RandomScale([0.96, 0.999])])
     test_dataset = EV_Gait_3DGraph_Dataset(
-        Config.Config.graph_test_dir, transform=test_data_aug
+        Config.graph_test_dir, transform=test_data_aug
     )
     test_loader = DataLoader(test_dataset, batch_size=64, num_workers=2, pin_memory=True)
     with torch.no_grad():
