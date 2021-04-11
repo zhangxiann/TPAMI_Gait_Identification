@@ -97,7 +97,7 @@ if __name__ == '__main__':
             total += len(data.y)
             correct += pred.eq(data.y).sum().item()
 
-        logging.info("test acc is {}" % (float(correct) / total))
+        logging.info("test acc is {}".format(float(correct) / total))
     state_sict = model.state_dict()
     torch.save(state_sict, Config.model_path)
 
