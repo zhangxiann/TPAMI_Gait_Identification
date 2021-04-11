@@ -4,12 +4,13 @@
 import numpy as np
 import os
 import scipy.io as sio
-from config import Config
 import concurrent.futures
+import argparse
 import sys
 sys.path.append("..")
+from config import Config
 
-import argparse
+
 
 parser = argparse.ArgumentParser()
 

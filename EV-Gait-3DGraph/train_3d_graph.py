@@ -13,11 +13,11 @@ from torch_geometric.data import DataLoader
 import argparse
 from model_3d_graph import Net
 import os
+import logging
 import sys
 sys.path.append("..")
-
 from config import Config
-import logging
+
 
 from ev_gait_3d_graph_dataset import EV_Gait_3DGraph_Dataset
 
