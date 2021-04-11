@@ -52,15 +52,26 @@ if __name__ == '__main__':
     # train_data_aug = T.Compose([T.Cartesian(cat=False), T.RandomScale([0.96, 0.999]), T.RandomTranslate(0.01)])
     train_data_aug = T.Compose([T.Cartesian(cat=False), T.RandomScale([0.96, 0.999])])
 
+    test_data_aug = T.Compose([T.Cartesian(cat=False), T.RandomScale([0.96, 0.999])])
+    # test_data_aug = T.Compose([T.Cartesian(cat=False)])
+    test_dataset = EV_Gait_3DGraph_Dataset(
+        Config.graph_test_dir, transform=test_data_aug
+    )
+    test_loader = DataLoader(test_dataset, batch_size=32, num_workers=2, pin_memory=True)
+
+
     train_dataset = EV_Gait_3DGraph_Dataset(
         Config.graph_train_dir, transform=train_data_aug
     )
     train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True, num_workers=2, pin_memory=True)
 
-    # train
-    model.train()
-    for epoch in range(1, args.epoch):
 
+    best_acc=0.0
+    best_epoch=0
+    # train
+
+    for epoch in range(1, args.epoch):
+        model.train()
         correct = 0
         total = 0
         for i, data in enumerate(tqdm(train_loader)):
@@ -77,28 +88,29 @@ if __name__ == '__main__':
 
         # accuracy of each epoch
         logging.info("epoch: {}, train acc is {}".format(epoch, float(correct) / total))
+        print("epoch: {}, train acc is {}".format(epoch, float(correct) / total))
 
 
-    # test
-    test_data_aug = T.Compose([T.Cartesian(cat=False), T.RandomScale([0.96, 0.999])])
-    # test_data_aug = T.Compose([T.Cartesian(cat=False)])
-    test_dataset = EV_Gait_3DGraph_Dataset(
-        Config.graph_test_dir, transform=test_data_aug
-    )
-    test_loader = DataLoader(test_dataset, batch_size=32, num_workers=2, pin_memory=True)
-    with torch.no_grad():
-        model.eval()
-        correct = 0
-        total = 0
+        # test
+        if epoch > (args.epoch/2):
+            with torch.no_grad():
+                model.eval()
+                correct = 0
+                total = 0
 
-        for index, data in enumerate(tqdm(test_loader)):
-            data = data.to(device)
-            end_point = model(data)
-            pred = end_point.max(1)[1]
-            total += len(data.y)
-            correct += pred.eq(data.y).sum().item()
+                for index, data in enumerate(tqdm(test_loader)):
+                    data = data.to(device)
+                    end_point = model(data)
+                    pred = end_point.max(1)[1]
+                    total += len(data.y)
+                    correct += pred.eq(data.y).sum().item()
 
-        logging.info("test acc is {}".format(float(correct) / total))
-    state_sict = model.state_dict()
-    torch.save(state_sict, Config.model_path)
+                logging.info("test acc is {}".format(float(correct) / total))
+                print("test acc is {}".format(float(correct) / total))
+                if float(correct) / total > best_acc:
+                    best_epoch = epoch
+                    best_acc = float(correct) / total
+                    state_sict = model.state_dict()
+                    torch.save(state_sict, Config.model_path)
 
+    logging.info("best epoch is {}, best test acc is {}".format(best_epoch, best_acc))

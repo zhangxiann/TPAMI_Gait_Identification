@@ -101,12 +101,11 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
 - generate graph representation for event:
 
   ```
-  cd generate_graph
-  python mat2graph.py
+  python generate_graph/mat2graph.py
   ```
-
   
 
+  
 - Download the pretrained model:
 
   ```
@@ -125,9 +124,13 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
 - train from scratch:
 
   ```
-  cd EV-Gait-3DGraph
-  nohup python -u train_3d_graph.py --epoch 60 --cuda 0 > train_3d_graph.log 2>&1 &
+  nohup python -u EV-Gait-3DGraph/train_3d_graph.py --epoch 80 --cuda 0 > train_3d_graph.log 2>&1 
+  &
   ```
+  
+  the traning log would be created at `log/train.log`.
+
+
 
 
 
