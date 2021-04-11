@@ -50,7 +50,7 @@ if __name__ == '__main__':
     model = model.to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=0.0005)
     # train_data_aug = T.Compose([T.Cartesian(cat=False), T.RandomScale([0.96, 0.999]), T.RandomTranslate(0.01)])
-    train_data_aug = T.Compose([T.Cartesian(cat=False), T.RandomScale([0.96, 0.999])])
+    train_data_aug = T.Compose([T.Cartesian(cat=False)])
 
     train_dataset = EV_Gait_3DGraph_Dataset(
         Config.graph_train_dir, transform=train_data_aug
@@ -80,7 +80,8 @@ if __name__ == '__main__':
 
 
     # test
-    test_data_aug = T.Compose([T.Cartesian(cat=False), T.RandomScale([0.96, 0.999])])
+    # test_data_aug = T.Compose([T.Cartesian(cat=False), T.RandomScale([0.96, 0.999])])
+    test_data_aug = T.Compose([T.Cartesian(cat=False)])
     test_dataset = EV_Gait_3DGraph_Dataset(
         Config.graph_test_dir, transform=test_data_aug
     )
