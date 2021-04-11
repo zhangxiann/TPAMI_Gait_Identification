@@ -108,11 +108,9 @@ def main():
             # make corresponding person graph dir
             if not os.path.exists(os.path.join(Config.graph_dir, train_test, "raw")):
                 os.makedirs(os.path.join(Config.graph_dir, train_test, "raw"))
-            index =0
+
             for file in os.listdir(os.path.join(Config.downsample_dir, train_test, person)):
-                index = index+1
-                if index>2:
-                    break
+
                 origin_path_list.append(os.path.join(Config.downsample_dir, train_test, person, file))
                 label_list.append(person)
                 # faltten the graph files in one directory
