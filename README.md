@@ -35,6 +35,11 @@ If you use any of this code or data, please cite the following publication:
 - Python 3.x
 - Conda
 - cuda
+- PyTorch
+- numpy
+- scipy
+- PyTorch Geometric
+- TensorFlow
 - Matlab (with **Computer Vision Toolbox** and **Image Processing Toolbox** for nonuniform grid downsample)
 
 
@@ -44,7 +49,7 @@ If you use any of this code or data, please cite the following publication:
 - First set up an [Anaconda](https://www.anaconda.com/) environment:
 
   ```
-  conda create -n gait python=3.7  
+  conda create -n gait python=3.7
   conda activate gait
   ```
 
@@ -53,12 +58,12 @@ If you use any of this code or data, please cite the following publication:
 - Then clone the repository and install the dependencies with pip:
 
   ```
-  git clone ***
+  git clone https://github.com/zhangxiann/TPAMI_Gait_Identification.git
   cd TPAMI_Gait_Identification
   pip install -r requirements.txt
   ```
 
-  
+- Install [PyTorch](https://pytorch.org/get-started/locally/), [PyTorch Geometric](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html), [TensorFlow](https://www.tensorflow.org/install) according to their documentation respectively.
 
 
 
@@ -121,7 +126,7 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
 
   ```
   cd EV-Gait-3DGraph
-  nohup python -u train_3d_graph.py --epoch 2 --cuda 0 > train_3d_graph.log 2>&1 &
+  nohup python -u train_3d_graph.py --epoch 60 --cuda 0 > train_3d_graph.log 2>&1 &
   ```
 
 
