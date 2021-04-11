@@ -13,8 +13,8 @@ from torch_geometric.data import DataLoader
 import argparse
 from model_3d_graph import Net
 import os
-# import sys
-# sys.path.append("..")
+import sys
+sys.path.append("..")
 
 from config import Config
 import logging

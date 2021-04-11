@@ -6,7 +6,8 @@ import os
 import scipy.io as sio
 from config import Config
 import concurrent.futures
-
+import sys
+sys.path.append("..")
 
 import argparse
 
