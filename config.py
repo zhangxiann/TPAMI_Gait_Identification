@@ -1,7 +1,8 @@
 import os
 
 class Config():
-    rootPath = os.getcwd()
+    curPath = os.path.abspath(__file__)
+    rootPath = os.path.split(curPath)[0]
     downsample_dir = os.path.join(rootPath, 'data/DVS128-Gait-Day/downsample')
     graph_dir = os.path.join(rootPath, 'data/DVS128-Gait-Day/graph')
     graph_train_dir = os.path.join(graph_dir, 'train')
