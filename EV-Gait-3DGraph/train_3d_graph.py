@@ -84,7 +84,7 @@ if __name__ == '__main__':
     test_dataset = EV_Gait_3DGraph_Dataset(
         Config.graph_test_dir, transform=test_data_aug
     )
-    test_loader = DataLoader(test_dataset, batch_size=64, num_workers=2, pin_memory=True)
+    test_loader = DataLoader(test_dataset, batch_size=32, num_workers=2, pin_memory=True)
     with torch.no_grad():
         model.eval()
         correct = 0
