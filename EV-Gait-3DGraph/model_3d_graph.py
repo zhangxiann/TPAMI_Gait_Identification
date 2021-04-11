@@ -45,6 +45,8 @@ class Net(torch.nn.Module):
         self.block3 = ResidualBlock(256, 512)
 
         self.fc1 = torch.nn.Linear(8 * 512, 1024)
+        #self.bn = torch.nn.BatchNorm1d(1024)
+        self.drop_out = torch.nn.Dropout(p=0.8)
         self.fc2 = torch.nn.Linear(1024, 20)
 
     def forward(self, data):
@@ -68,6 +70,6 @@ class Net(torch.nn.Module):
         # x = x.view(-1, self.fc1.weight.size(1))
         x = x[0].view(-1, self.fc1.weight.size(1))
         x = F.elu(self.fc1(x))
-        x = F.dropout(x, training=self.training)
+        x = self.drop_out(x)
         x = self.fc2(x)
         return F.log_softmax(x, dim=1)
