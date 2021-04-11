@@ -82,7 +82,7 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
 
 ## Run EV-Gait-3DGraph
 
-- download **DVS128-Gait-Day** dataset to the `data` folder, you will get **DVS128-Gait-Day.zip**, and unzip it in that folder.
+- download **DVS128-Gait-Day** dataset to the `data` folder, you will get **DVS128-Gait-Day.zip**, and unzip it in the `data` folder.
 
 
 - event downsample using matlab:
@@ -121,7 +121,7 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
 
   ```
   cd EV-Gait-3DGraph
-  python train_3d_graph.py
+  nohup python -u train_3d_graph.py > train_3d_graph.log 2>&1 & 
   ```
 
 
