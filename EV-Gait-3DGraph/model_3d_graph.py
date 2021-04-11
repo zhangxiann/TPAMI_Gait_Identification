@@ -46,7 +46,7 @@ class Net(torch.nn.Module):
 
         self.fc1 = torch.nn.Linear(8 * 512, 1024)
         #self.bn = torch.nn.BatchNorm1d(1024)
-        self.drop_out = torch.nn.Dropout(p=0.8)
+        self.drop_out = torch.nn.Dropout()
         self.fc2 = torch.nn.Linear(1024, 20)
 
     def forward(self, data):
