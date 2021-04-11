@@ -64,7 +64,7 @@ class Net(torch.nn.Module):
         cluster = voxel_grid(data.pos, data.batch, size=64)
         x = max_pool_x(cluster, data.x, data.batch, size=8)
 
-        x = x.view(-1, self.fc1.weight.size(1))
+        x = x[0].view(-1, self.fc1.weight.size(1))
         x = F.elu(self.fc1(x))
         x = F.dropout(x, training=self.training)
         x = self.fc2(x)

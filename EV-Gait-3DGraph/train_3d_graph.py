@@ -66,17 +66,15 @@ if __name__ == '__main__':
         correct = 0
         total = 0
         for i, data in enumerate(train_loader):
-            with autograd.detect_anomaly():
-
-                data = data.to(device)
-                optimizer.zero_grad()
-                end_point = model(data)
-                loss = F.nll_loss(end_point, data.y)
-                pred = end_point.max(1)[1]
-                total += len(data.y)
-                correct += pred.eq(data.y).sum().item()
-                loss.backward()
-                optimizer.step()
+            data = data.to(device)
+            optimizer.zero_grad()
+            end_point = model(data)
+            loss = F.nll_loss(end_point, data.y)
+            pred = end_point.max(1)[1]
+            total += len(data.y)
+            correct += pred.eq(data.y).sum().item()
+            loss.backward()
+            optimizer.step()
 
 
         # accuracy of each epoch
