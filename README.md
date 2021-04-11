@@ -1,17 +1,31 @@
+## Summary
+
 This is the code for the paper **Event-Stream Representation for Human Gaits Identification Using Deep Neural Networks** by Yanxiang Wang, [Xian Zhang](https://blog.zhangxiann.com/), [Yiran Shen*](http://yiranshen.academic.site/), Bowen Du, Guangrong Zhao, Lizhen Cui Cui Lizhen, Hongkai Wen.
 
 The paper can be found [here](http://academic0202101180gpyi.images.academic.site/eventstream%20representation%20early%20access%20version.pdf).
 
+
+
+## Introduction
+
 In this paper, We propose new event-based gait recognition approaches basing on two different representations of the event-stream, i.e., graph and image-like representations, and use Graph-based Convolutional Network (GCN) and Convolutional Neural Networks (CNN) respectively to recognize gait from the event-streams. The two approaches are termed as **EV-Gait-3DGraph** and **EV-Gait-IMG**. To evaluate the performance of the proposed approaches, we collect two event-based gait datasets, one from real-world experiments and the other by converting the publicly available RGB gait recognition benchmark CASIA-B.
+
+
 
 If you use any of this code or data, please cite the following publication:
 
 > @article{wang2021event,
->   title={Event-Stream Representation for Human Gaits Identification Using Deep Neural Networks},
->   author={Wang, Yanxiang and Zhang, Xian and Shen, Yiran and Du, Bowen and Zhao, Guangrong and Lizhen, Lizhen Cui Cui and Wen, Hongkai},
->   journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
->   year={2021},
->   publisher={IEEE}
+> 
+>     title={Event-Stream Representation for Human Gaits Identification Using Deep Neural Networks},
+>   
+>     author={Wang, Yanxiang and Zhang, Xian and Shen, Yiran and Du, Bowen and Zhao,     Guangrong and Lizhen, Lizhen Cui Cui and Wen, Hongkai},
+>   
+>     journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+>   
+>     year={2021},
+>   
+>     publisher={IEEE}
+>   
 > }
 
 
