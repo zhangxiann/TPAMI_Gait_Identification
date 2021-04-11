@@ -11,6 +11,9 @@ import torch.nn.functional as F
 import torch_geometric.transforms as T
 from torch_geometric.data import DataLoader
 import argparse
+
+from tqdm import tqdm
+
 from model_3d_graph import Net
 import os
 import logging
@@ -65,7 +68,7 @@ if __name__ == '__main__':
 
         correct = 0
         total = 0
-        for i, data in enumerate(train_loader):
+        for i, data in enumerate(tqdm(train_loader)):
             data = data.to(device)
             optimizer.zero_grad()
             end_point = model(data)
@@ -92,7 +95,7 @@ if __name__ == '__main__':
         correct = 0
         total = 0
 
-        for index, data in enumerate(test_loader):
+        for index, data in enumerate(tqdm(test_loader)):
             data = data.to(device)
             end_point = model(data)
             pred = end_point.max(1)[1]
