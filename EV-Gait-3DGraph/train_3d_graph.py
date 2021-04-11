@@ -6,7 +6,6 @@ import numpy as np
 
 
 import torch
-from torch import autograd
 import torch.nn.functional as F
 import torch_geometric.transforms as T
 from torch_geometric.data import DataLoader
@@ -82,7 +81,7 @@ if __name__ == '__main__':
     # test
     test_data_aug = T.Compose([T.Cartesian(cat=False)])
     test_dataset = EV_Gait_3DGraph_Dataset(
-        Config.graph_test_dir, transform=test_data_aug
+        Config.graph_test_dir, transform=train_data_aug
     )
     test_loader = DataLoader(test_dataset, batch_size=64, num_workers=2, pin_memory=True)
     with torch.no_grad():
