@@ -39,7 +39,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--cuda", default="0", help="The GPU ID")
-    parser.add_argument("--epoch", default=60, type=int, help="The GPU ID")
+    parser.add_argument("--epoch", default=110, type=int, help="The GPU ID")
     args = parser.parse_args()
     torch.multiprocessing.set_sharing_strategy('file_system')
     torch.backends.cudnn.benchmark = False
@@ -49,8 +49,8 @@ if __name__ == '__main__':
 
     model = Net()
     model = model.to(device)
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.000003)
-    train_data_aug = T.Compose([T.Cartesian(cat=False), T.RandomScale([0.96, 0.999]), T.RandomTranslate(0.01)])
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.0005)
+    train_data_aug = T.Compose([T.Cartesian(cat=False), T.RandomScale([0.96, 0.999])])
 
     train_dataset = EV_Gait_3DGraph_Dataset(
         Config.graph_train_dir, transform=train_data_aug
