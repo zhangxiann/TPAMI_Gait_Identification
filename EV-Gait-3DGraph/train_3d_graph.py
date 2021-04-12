@@ -52,18 +52,17 @@ if __name__ == '__main__':
     # train_data_aug = T.Compose([T.Cartesian(cat=False), T.RandomScale([0.96, 0.999]), T.RandomTranslate(0.01)])
     train_data_aug = T.Compose([T.Cartesian(cat=False), T.RandomScale([0.96, 0.999])])
 
+    train_dataset = EV_Gait_3DGraph_Dataset(
+        Config.graph_train_dir, transform=train_data_aug
+    )
+    train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True, num_workers=2, pin_memory=True)
+
     test_data_aug = T.Compose([T.Cartesian(cat=False), T.RandomScale([0.96, 0.999])])
     # test_data_aug = T.Compose([T.Cartesian(cat=False)])
     test_dataset = EV_Gait_3DGraph_Dataset(
         Config.graph_test_dir, transform=test_data_aug
     )
-    test_loader = DataLoader(test_dataset, batch_size=32, num_workers=2, pin_memory=True)
-
-
-    train_dataset = EV_Gait_3DGraph_Dataset(
-        Config.graph_train_dir, transform=train_data_aug
-    )
-    train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True, num_workers=2, pin_memory=True)
+    test_loader = DataLoader(test_dataset, batch_size=16, num_workers=2, pin_memory=True)
 
 
     best_acc=0.0
