@@ -64,9 +64,6 @@ if __name__ == '__main__':
     )
     test_loader = DataLoader(test_dataset, batch_size=16, num_workers=2, pin_memory=True)
 
-
-    best_acc=0.0
-    best_epoch=0
     # train
 
     for epoch in range(1, args.epoch):
@@ -98,7 +95,7 @@ if __name__ == '__main__':
 
 
         # test
-        if epoch > (args.epoch/2):
+        if epoch > (args.epoch*0.75):
             model.eval()
             correct = 0
             total = 0
@@ -112,10 +109,6 @@ if __name__ == '__main__':
 
             logging.info("test acc is {}".format(float(correct) / total))
             print("test acc is {}".format(float(correct) / total))
-            if float(correct) / total > best_acc:
-                best_epoch = epoch
-                best_acc = float(correct) / total
-                state_sict = model.state_dict()
-                torch.save(state_sict, Config.model_path)
+            state_sict = model.state_dict()
+            torch.save(state_sict, Config.model_path.format(epoch))
 
-    logging.info("best epoch is {}, best test acc is {}".format(best_epoch, best_acc))

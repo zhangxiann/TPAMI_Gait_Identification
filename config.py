@@ -10,4 +10,4 @@ class Config():
     log_dir = os.path.join(rootPath, 'log')
     train_log_path = os.path.join(log_dir, 'train.log')
     model_dir = os.path.join(rootPath, 'trained_model')
-    model_path = os.path.join(model_dir, 'EV_Gait_3DGraph.pkl')
+    model_path = os.path.join(model_dir, 'EV_Gait_3DGraph_epoch_{}.pkl')
