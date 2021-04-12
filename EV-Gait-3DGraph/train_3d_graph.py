@@ -48,7 +48,7 @@ if __name__ == '__main__':
 
     model = Net()
     model = model.to(device)
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.0005)
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
     # train_data_aug = T.Compose([T.Cartesian(cat=False), T.RandomScale([0.96, 0.999]), T.RandomTranslate(0.01)])
     train_data_aug = T.Compose([T.Cartesian(cat=False), T.RandomScale([0.96, 0.999])])
 
@@ -71,6 +71,13 @@ if __name__ == '__main__':
 
     for epoch in range(1, args.epoch):
         model.train()
+
+        if epoch == 60:
+            for param_group in optimizer.param_groups:
+                param_group["lr"] = 0.0001
+        if epoch == 110:
+            for param_group in optimizer.param_groups:
+                param_group["lr"] = 0.00001
         correct = 0
         total = 0
         for i, data in enumerate(tqdm(train_loader)):
@@ -92,24 +99,23 @@ if __name__ == '__main__':
 
         # test
         if epoch > (args.epoch/2):
-            with torch.no_grad():
-                model.eval()
-                correct = 0
-                total = 0
+            model.eval()
+            correct = 0
+            total = 0
 
-                for index, data in enumerate(tqdm(test_loader)):
-                    data = data.to(device)
-                    end_point = model(data)
-                    pred = end_point.max(1)[1]
-                    total += len(data.y)
-                    correct += pred.eq(data.y).sum().item()
+            for index, data in enumerate(tqdm(test_loader)):
+                data = data.to(device)
+                end_point = model(data)
+                pred = end_point.max(1)[1]
+                total += len(data.y)
+                correct += pred.eq(data.y).sum().item()
 
-                logging.info("test acc is {}".format(float(correct) / total))
-                print("test acc is {}".format(float(correct) / total))
-                if float(correct) / total > best_acc:
-                    best_epoch = epoch
-                    best_acc = float(correct) / total
-                    state_sict = model.state_dict()
-                    torch.save(state_sict, Config.model_path)
+            logging.info("test acc is {}".format(float(correct) / total))
+            print("test acc is {}".format(float(correct) / total))
+            if float(correct) / total > best_acc:
+                best_epoch = epoch
+                best_acc = float(correct) / total
+                state_sict = model.state_dict()
+                torch.save(state_sict, Config.model_path)
 
     logging.info("best epoch is {}, best test acc is {}".format(best_epoch, best_acc))
