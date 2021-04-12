@@ -55,14 +55,14 @@ if __name__ == '__main__':
     train_dataset = EV_Gait_3DGraph_Dataset(
         Config.graph_train_dir, transform=train_data_aug
     )
-    train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True, num_workers=2, pin_memory=True)
+    train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True, num_workers=2, pin_memory=True)
 
     test_data_aug = T.Compose([T.Cartesian(cat=False), T.RandomScale([0.96, 0.999])])
     # test_data_aug = T.Compose([T.Cartesian(cat=False)])
     test_dataset = EV_Gait_3DGraph_Dataset(
         Config.graph_test_dir, transform=test_data_aug
     )
-    test_loader = DataLoader(test_dataset, batch_size=16, num_workers=2, pin_memory=True)
+    test_loader = DataLoader(test_dataset, batch_size=32, num_workers=2, pin_memory=True)
 
     # train
     best_acc = 0
@@ -96,7 +96,7 @@ if __name__ == '__main__':
 
 
         # test
-        if epoch > (args.epoch*0.75):
+        if epoch > (args.epoch*0.4):
             model.eval()
             correct = 0
             total = 0
@@ -115,5 +115,5 @@ if __name__ == '__main__':
             if float(correct) / total > best_acc:
                 best_acc = float(correct) / total
                 best_epoch = epoch
-            logging.info("best acc is {}".format(best_acc))
-            print("best epoch is {}".format(best_epoch))
+    logging.info("best acc is {}".format(best_acc))
+    print("best epoch is {}".format(best_epoch))
