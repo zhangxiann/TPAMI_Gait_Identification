@@ -115,4 +115,5 @@ if __name__ == '__main__':
             if float(correct) / total > best_acc:
                 best_acc = float(correct) / total
                 best_epoch = epoch
-
+            logging.info("best acc is {}".format(best_acc))
+            print("best epoch is {}".format(best_epoch))
