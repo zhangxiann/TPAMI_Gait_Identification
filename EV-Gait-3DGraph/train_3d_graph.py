@@ -96,7 +96,7 @@ if __name__ == '__main__':
 
 
         # test
-        if epoch > (args.epoch*0.4):
+        if epoch > (args.epoch*0.2):
             model.eval()
             correct = 0
             total = 0
