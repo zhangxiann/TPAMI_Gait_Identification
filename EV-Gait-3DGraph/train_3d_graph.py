@@ -38,7 +38,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--cuda", default="0", help="The GPU ID")
-    parser.add_argument("--epoch", default=110, type=int, help="The GPU ID")
+    parser.add_argument("--epoch", default=150, type=int, help="The GPU ID")
     args = parser.parse_args()
     torch.multiprocessing.set_sharing_strategy('file_system')
     torch.backends.cudnn.benchmark = False
@@ -96,7 +96,7 @@ if __name__ == '__main__':
 
 
         # test
-        if epoch > (args.epoch*0.1):
+        if epoch > (args.epoch*0.5):
             model.eval()
             correct = 0
             total = 0
