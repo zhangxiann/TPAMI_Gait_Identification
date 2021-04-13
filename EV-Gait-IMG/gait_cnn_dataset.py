@@ -15,6 +15,5 @@ class EV_Gait_IMG_DATASET(Dataset):
         return self.keys.__len__()
 
     def __getitem__(self, index):
-        # 返回数据 和 label
         # self.keys[index] == 'Train_9_00058'
         return self.data.get(self.keys[index])[:], int(self.keys[index].split('_')[1])
