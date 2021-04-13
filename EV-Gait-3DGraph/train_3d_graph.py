@@ -110,11 +110,11 @@ if __name__ == '__main__':
 
             logging.info("test acc is {}".format(float(correct) / total))
             print("test acc is {}".format(float(correct) / total))
-            state_sict = model.state_dict()
-            torch.save(state_sict, Config.gcn_model_path.format(epoch))
+
             if float(correct) / total > best_acc:
                 best_acc = float(correct) / total
                 best_epoch = epoch
+                torch.save(model.state_dict(), Config.gcn_model_path.format(epoch))
     logging.info("best acc is {}".format(best_acc))
     logging.info("best epoch is {}".format(best_epoch))
     print("best epoch is {}".format(best_epoch))

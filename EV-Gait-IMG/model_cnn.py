@@ -30,16 +30,16 @@ class Net(nn.Module):
         super(Net,self).__init__()
 
         self.features = nn.Sequential(
-            nn.Conv2d(num_channel, 64, kernel_size=3, stride=2, padding=1),
+            nn.Conv2d(num_channel, num_channel*16, kernel_size=3, stride=2, padding=1),
             nn.ReLU(),
-            nn.Conv2d(64, 128, kernel_size=3, stride=2, padding=1),
+            nn.Conv2d(num_channel*16, num_channel*32, kernel_size=3, stride=2, padding=1),
             nn.ReLU(),
-            nn.Conv2d(128, 256, kernel_size=3, stride=2, padding=1),
+            nn.Conv2d(num_channel*32, num_channel*64, kernel_size=3, stride=2, padding=1),
             nn.ReLU(),
-            nn.Conv2d(256, 512, kernel_size=3, stride=2, padding=1),
+            nn.Conv2d(num_channel*64, num_channel*128, kernel_size=3, stride=2, padding=1),
             nn.ReLU(),
-            ResidualBlock(512, 512),
-            ResidualBlock(512, 512),
+            ResidualBlock(num_channel*128, num_channel*128),
+            ResidualBlock(num_channel*128, num_channel*128),
         )
 
         self.classifier = nn.Sequential(
@@ -48,7 +48,7 @@ class Net(nn.Module):
             # nn.ReLU(inplace=True),
             # nn.Dropout(),
             # nn.Linear(128,10),
-            nn.Linear(8*8*512, 1024),
+            nn.Linear(8*8*num_channel*128, 1024),
             nn.ReLU(inplace=True),
             nn.Linear(1024, 512),
             nn.ReLU(inplace=True),

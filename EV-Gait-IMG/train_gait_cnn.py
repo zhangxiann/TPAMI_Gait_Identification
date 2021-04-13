@@ -35,7 +35,7 @@ img_type_dict={
 }
 device = torch.device("cuda:"+args.cuda if torch.cuda.is_available() else "cpu")
 
-logging.basicConfig(filename=Config.cnn_train_log_path, level=logging.DEBUG)
+logging.basicConfig(filename=Config.cnn_train_log_path.format(args.img_type), level=logging.DEBUG)
 
 
 model = Net(img_type_dict[args.img_type]['channel_num'])
@@ -48,6 +48,8 @@ test_dataset = EV_Gait_IMG_DATASET(os.path.join(Config.image_dir, img_type_dict[
 test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, num_workers=0, shuffle=True)
 
 
+best_acc = 0.0
+best_epoch = 0
 for epoch in range(1, args.epoch):
     model.train()
     correct = 0
@@ -83,5 +85,15 @@ for epoch in range(1, args.epoch):
             pred = end_point.max(1)[1]
             total += len(label)
             correct += pred.eq(label).sum().item()
-        logging.info("Test Acc: {}".format(float(correct) / total))
-        torch.save(model.state_dict(), os.path.join(Config.cnn_model_path.format(epoch)))
+        if float(correct) / total > best_acc:
+            best_acc = float(correct) / total
+            best_epoch = epoch
+            torch.save(model.state_dict(), os.path.join(Config.cnn_model_path.format(epoch)))
+
+        logging.info("test acc is {}".format(float(correct) / total))
+        print("test acc is {}".format(float(correct) / total))
+
+    logging.info("best acc is {}".format(best_acc))
+    logging.info("best epoch is {}".format(best_epoch))
+    print("best epoch is {}".format(best_epoch))
+    print("best acc is {}".format(best_acc))

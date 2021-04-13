@@ -11,7 +11,7 @@ class Config():
     graph_test_dir = os.path.join(graph_dir, 'test')
     log_dir = os.path.join(rootPath, 'log')
     graph_train_log_path = os.path.join(log_dir, 'graph_train.log')
-    cnn_train_log_path = os.path.join(log_dir, 'cnn_train.log')
+    cnn_train_log_path = os.path.join(log_dir, 'cnn_train_{}.log')
     model_dir = os.path.join(rootPath, 'trained_model')
     gcn_model_path = os.path.join(model_dir, 'EV_Gait_3DGraph_epoch_{}.pkl')
 
