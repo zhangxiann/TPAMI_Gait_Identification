@@ -136,3 +136,9 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
 
 ## Run EV-Gait-IMG
 
+
+
+```
+nohup python -u train_gait_cnn.py --epoch 100 --cuda 0 > train_gait_cnn.log 2>&1 &
+```
+

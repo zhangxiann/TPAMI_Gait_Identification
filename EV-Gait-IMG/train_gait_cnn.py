@@ -22,7 +22,7 @@ parser.add_argument(
     "--img_type", default='four_channel', help="The num of event image channels"
 )
 
-parser.add_argument("--epoch", default=512, type=int, help="The number of epochs")
+parser.add_argument("--epoch", default=50, type=int, help="The number of epochs")
 parser.add_argument("--batch_size", default=512, type=int, help="batch size")
 parser.add_argument("--cuda", default="0", help="The GPU ID")
 
@@ -44,8 +44,12 @@ optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 train_dataset = EV_Gait_IMG_DATASET(os.path.join(Config.image_dir, img_type_dict[args.img_type]['file']), train=True)
 train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, num_workers=0, shuffle=True)
 
-model.train()
+test_dataset = EV_Gait_IMG_DATASET(os.path.join(Config.image_dir, img_type_dict[args.img_type]['file']), train=False)
+test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, num_workers=0, shuffle=True)
+
+
 for epoch in range(1, args.epoch):
+    model.train()
     correct = 0
     total = 0
     for i, data in enumerate(tqdm(train_dataloader, desc="Epoch: {}".format(epoch))):
@@ -66,22 +70,18 @@ for epoch in range(1, args.epoch):
     logging.info("Epoch: {} Acc: {}".format(epoch, correct / total))
 
 
-torch.save(model.state_dict(), os.path.join(Config.cnn_model_path))
-
-
-test_dataset = EV_Gait_IMG_DATASET(os.path.join(Config.image_dir, img_type_dict[args.img_type]['file']).replace('\\', '/'), train=False)
-test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, num_workers=0, shuffle=True)
-
-model.eval()
-correct = 0
-total = 0
-for index, data in enumerate(test_dataloader):
-    input, label = data
-    input = input.transpose(1, 3).float()
-    input = input.to(device)
-    label = label.to(device)
-    end_point = model(input)
-    pred = end_point.max(1)[1]
-    total += len(label)
-    correct += pred.eq(label).sum().item()
-logging.info("Test Acc: {}".format(correct / total))
+    if epoch>(args.epoch*0.5):
+        model.eval()
+        correct = 0
+        total = 0
+        for index, data in enumerate(test_dataloader):
+            input, label = data
+            input = input.transpose(1, 3).float()
+            input = input.to(device)
+            label = label.to(device)
+            end_point = model(input)
+            pred = end_point.max(1)[1]
+            total += len(label)
+            correct += pred.eq(label).sum().item()
+        logging.info("Test Acc: {}".format(correct / total))
+        torch.save(model.state_dict(), os.path.join(Config.cnn_model_path.format(epoch)))
