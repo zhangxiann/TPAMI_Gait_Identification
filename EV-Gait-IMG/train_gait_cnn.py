@@ -72,7 +72,7 @@ for epoch in range(1, args.epoch):
     logging.info("Epoch: {} Acc: {}".format(epoch, float(correct) / total))
 
 
-    if epoch>(args.epoch*0.5):
+    if epoch>(args.epoch*0.3):
         model.eval()
         correct = 0
         total = 0
