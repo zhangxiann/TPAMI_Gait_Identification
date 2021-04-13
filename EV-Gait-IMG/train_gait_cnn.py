@@ -67,7 +67,7 @@ for epoch in range(1, args.epoch):
         correct += pred.eq(label).sum().item()
         loss.backward()
         optimizer.step()
-    logging.info("Epoch: {} Acc: {}".format(epoch, correct / total))
+    logging.info("Epoch: {} Acc: {}".format(epoch, float(correct) / total))
 
 
     if epoch>(args.epoch*0.5):
@@ -83,5 +83,5 @@ for epoch in range(1, args.epoch):
             pred = end_point.max(1)[1]
             total += len(label)
             correct += pred.eq(label).sum().item()
-        logging.info("Test Acc: {}".format(correct / total))
+        logging.info("Test Acc: {}".format(float(correct) / total))
         torch.save(model.state_dict(), os.path.join(Config.cnn_model_path.format(epoch)))
