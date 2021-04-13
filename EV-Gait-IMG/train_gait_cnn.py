@@ -6,8 +6,10 @@ from gait_cnn_dataset import EV_Gait_IMG_DATASET
 import torch
 import argparse
 import os
-from config import Config
+import sys
 import torch.nn.functional as F
+sys.path.append("..")
+from config import Config
 
 
 learning_rate = 0.00001
