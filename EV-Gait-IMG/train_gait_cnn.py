@@ -20,8 +20,8 @@ parser.add_argument(
     "--img_type", default='four_channel', help="The num of event image channels"
 )
 
-parser.add_argument("--epoch", default=5, type=int, help="The number of epochs")
-parser.add_argument("--batch_size", default=128, type=int, help="batch size")
+parser.add_argument("--epoch", default=, type=int, help="The number of epochs")
+parser.add_argument("--batch_size", default=512, type=int, help="batch size")
 parser.add_argument("--cuda", default="0", help="The GPU ID")
 
 args = parser.parse_args()
@@ -61,7 +61,7 @@ for epoch in range(1, args.epoch):
         correct += pred.eq(label).sum().item()
         loss.backward()
         optimizer.step()
-    logging.info(f"Epoch: {epoch} Acc: {correct / total:.5}")
+    logging.info("Epoch: {} Acc: {}".format(epoch, correct / total))
 
 
 torch.save(model.state_dict(), os.path.join(Config.cnn_model_path))
@@ -82,4 +82,4 @@ for index, data in enumerate(test_dataloader):
     pred = end_point.max(1)[1]
     total += len(label)
     correct += pred.eq(label).sum().item()
-logging.info(f"Test Acc: {correct / total:.5}")
+logging.info("Test Acc: {}".format(correct / total))
