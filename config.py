@@ -20,4 +20,4 @@ class Config():
     four_channels_file = os.path.join(image_dir, 'four_channels.hdf5')
     two_channels_time_file = os.path.join(image_dir, 'two_channels_time.hdf5')
     two_channels_counts_and_time_file = os.path.join(image_dir, 'two_channels_counts_and_time.hdf5')
-    cnn_model_path = os.path.join(model_dir, 'EV_Gait-IMG_epoch_{}.pkl')
+    cnn_model_path = os.path.join(model_dir, 'EV_Gait-IMG_{}_epoch_{}.pkl')

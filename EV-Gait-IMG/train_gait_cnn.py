@@ -88,7 +88,7 @@ for epoch in range(1, args.epoch):
         if float(correct) / total > best_acc:
             best_acc = float(correct) / total
             best_epoch = epoch
-            torch.save(model.state_dict(), os.path.join(Config.cnn_model_path.format(epoch)))
+            torch.save(model.state_dict(), os.path.join(Config.cnn_model_path.format(args.img_type, epoch)))
 
         logging.info("test acc is {}".format(float(correct) / total))
         print("test acc is {}".format(float(correct) / total))
