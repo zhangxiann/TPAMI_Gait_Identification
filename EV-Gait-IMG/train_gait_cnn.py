@@ -93,7 +93,7 @@ for epoch in range(1, args.epoch):
         logging.info("test acc is {}".format(float(correct) / total))
         print("test acc is {}".format(float(correct) / total))
 
-    logging.info("best acc is {}".format(best_acc))
-    logging.info("best epoch is {}".format(best_epoch))
-    print("best epoch is {}".format(best_epoch))
-    print("best acc is {}".format(best_acc))
+logging.info("best acc is {}".format(best_acc))
+logging.info("best epoch is {}".format(best_epoch))
+print("best epoch is {}".format(best_epoch))
+print("best acc is {}".format(best_acc))
