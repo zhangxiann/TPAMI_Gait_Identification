@@ -54,6 +54,7 @@ class Net(nn.Module):
             nn.Dropout(),
             nn.Linear(1024, 512),
             nn.ReLU(inplace=True),
+            nn.Dropout(),
             nn.Linear(512, 20),
         )
 
