@@ -12,7 +12,7 @@ sys.path.append("..")
 from config import Config
 
 
-learning_rate = 0.00001
+learning_rate = 0.0001
 
 
 
