@@ -20,7 +20,7 @@ parser.add_argument(
     "--img_type", default='four_channel', help="The num of event image channels"
 )
 
-parser.add_argument("--epoch", default=, type=int, help="The number of epochs")
+parser.add_argument("--epoch", default=512, type=int, help="The number of epochs")
 parser.add_argument("--batch_size", default=512, type=int, help="batch size")
 parser.add_argument("--cuda", default="0", help="The GPU ID")
 
