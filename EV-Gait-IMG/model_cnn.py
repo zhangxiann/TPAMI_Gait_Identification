@@ -16,7 +16,6 @@ class ResidualBlock(nn.Module):
         )
         self.shortcut = nn.Sequential()
 
-
     def forward(self, x):
         # print("x:" + str(x.shape))
         out = self.left(x)
@@ -54,6 +53,7 @@ class Net(nn.Module):
             nn.Dropout(),
             nn.Linear(1024, 512),
             nn.ReLU(inplace=True),
+            nn.Dropout(),
             nn.Linear(512, 20),
         )
 
