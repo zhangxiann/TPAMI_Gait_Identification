@@ -41,8 +41,7 @@ class EV_Gait_3DGraph_Dataset(Dataset):
     def download(self):
         pass
 
-    # 把 self.raw_dir 的 mat 文件转化为 torch_geometric.Data 格式，保存在 self.processed_dir 中
-    # 该方法只会执行一次
+
     # convert the mat files of self.raw_dir to torch_geometric.Data format, save the result files in self.processed_dir
     # this method will only execute one time at the first running.
     def process(self):
