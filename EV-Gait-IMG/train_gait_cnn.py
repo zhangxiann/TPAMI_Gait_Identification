@@ -30,7 +30,7 @@ args = parser.parse_args()
 img_type_dict={
     'time_only_two_channel':{'channel_num':2, 'file': Config.two_channels_time_file},
     'counts_only_two_channel':{'channel_num':2, 'file': Config.two_channels_counts_file},
-    'counst_and_time_two_channel':{'channel_num':2, 'file': Config.two_channels_counts_and_time_file},
+    'counts_and_time_two_channel':{'channel_num':2, 'file': Config.two_channels_counts_and_time_file},
     'four_channel':{'channel_num':4, 'file': Config.four_channels_file},
 }
 device = torch.device("cuda:"+args.cuda if torch.cuda.is_available() else "cpu")
