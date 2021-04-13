@@ -54,6 +54,7 @@ if __name__ == '__main__':
                 path_list.append(file_path)
                 data_name = train_test + "_" + person + "_" + os.path.basename(txt_file)
                 data_names.append(data_name)
+                #break
 
     generate_event_img(Config.two_channels_counts_file, convert_event_to_channel_image_tool.generate_two_channels_count, data_names, path_list)
     generate_event_img(Config.two_channels_time_file, convert_event_to_channel_image_tool.generate_two_channels_time, data_names, path_list)

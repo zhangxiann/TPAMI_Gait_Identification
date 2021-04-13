@@ -40,7 +40,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     torch.multiprocessing.set_sharing_strategy('file_system')
     torch.backends.cudnn.benchmark = False
-    logging.basicConfig(filename=Config.train_log_path, level=logging.DEBUG)
+    logging.basicConfig(filename=Config.graph_train_log_path, level=logging.DEBUG)
 
     device = torch.device("cuda:" + args.cuda if torch.cuda.is_available() else "cpu")
 
