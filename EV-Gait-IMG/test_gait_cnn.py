@@ -58,3 +58,4 @@ for index, data in enumerate(test_dataloader):
 
 
 logging.info("test acc is {}".format(float(correct) / total))
+print("test acc is {}".format(float(correct) / total))
