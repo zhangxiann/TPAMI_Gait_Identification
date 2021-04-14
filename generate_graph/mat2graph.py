@@ -63,12 +63,12 @@ def calculate_edges(data, r=5):
 # get polarity as the feature of the node
 def extract_feature(data):
     data_size = data.shape[0]
-    feature = np.zeros([data_size, 1])
-    for i in range(data_size):
-        if data[i, 3] == 1:
-            feature[i, 0] = +1
-        else:
-            feature[i, 0] = -1
+    feature = np.ones([data_size, 1])
+    # for i in range(data_size):
+    #     if data[i, 3] == 1:
+    #         feature[i, 0] = +1
+    #     else:
+    #         feature[i, 0] = -1
     return feature
 
 

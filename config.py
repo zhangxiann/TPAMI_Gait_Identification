@@ -6,14 +6,14 @@ class Config():
     downsample_dir = os.path.join(rootPath, 'data/DVS128-Gait-Day/downsample')
     data_dir = os.path.join(rootPath, 'data/DVS128-Gait-Day')
 
-    graph_dir = os.path.join(data_dir, 'graph')
+    graph_dir = os.path.join(data_dir, 'graph_privacy')
     graph_train_dir = os.path.join(graph_dir, 'train')
     graph_test_dir = os.path.join(graph_dir, 'test')
     log_dir = os.path.join(rootPath, 'log')
-    graph_train_log_path = os.path.join(log_dir, 'graph_train.log')
+    graph_train_log_path = os.path.join(log_dir, 'graph_train_no_polarity.log')
     cnn_train_log_path = os.path.join(log_dir, 'cnn_train_{}.log')
     model_dir = os.path.join(rootPath, 'trained_model')
-    gcn_model_path = os.path.join(model_dir, 'EV_Gait_3DGraph_epoch_{}.pkl')
+    gcn_model_path = os.path.join(model_dir, 'EV_Gait_3DGraph_epoch_no_polarity_{}.pkl')
 
     image_dir = os.path.join(data_dir, 'image')
     two_channels_counts_file = os.path.join(image_dir, 'two_channels_counts.hdf5')

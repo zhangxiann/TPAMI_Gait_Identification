@@ -142,3 +142,11 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
 nohup python -u train_gait_cnn.py --epoch 100 --cuda 0 > train_gait_cnn.log 2>&1 &
 ```
 
+
+
+test
+
+```
+python test_gait_cnn.py --model_path EV_Gait_IMG_counts_only_two_channel.pkl --img_type counts_only_two_channel
+```
+
