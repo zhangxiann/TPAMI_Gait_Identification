@@ -47,7 +47,7 @@ if __name__ == '__main__':
     model = Net()
     model = model.to(device)
     model.load_state_dict(torch.load(os.path.join(Config.model_dir, args.model_path)))
-    test_data_aug = T.Compose([T.Cartesian(cat=False), T.RandomScale([0.96, 0.999])])
+    test_data_aug = T.Compose([T.Cartesian(cat=False), T.RandomScale([0.999, 1.0])])
     # test_data_aug = T.Compose([T.Cartesian(cat=False)])
     test_dataset = EV_Gait_3DGraph_Dataset(
         Config.graph_test_dir, transform=test_data_aug
