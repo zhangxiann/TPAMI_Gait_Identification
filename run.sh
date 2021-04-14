@@ -6,3 +6,5 @@ nohup python -u train_gait_cnn.py --img_type four_channel --epoch 60 --cuda 1 > 
 
 # gcn
 nohup python -u EV-Gait-3DGraph/train_3d_graph.py --epoch 150 --cuda 0 > train_3d_graph.log 2>&1 &
+
+

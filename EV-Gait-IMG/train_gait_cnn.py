@@ -12,10 +12,8 @@ sys.path.append("..")
 from config import Config
 
 
-learning_rate = 0.0001
+learning_rate = 0.00001
 # learning_rate = 0.0000003
-
-
 
 parser = argparse.ArgumentParser()
 # parser.add_argument("--name", required=True, help="The path of dataset")
