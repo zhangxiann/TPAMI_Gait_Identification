@@ -36,7 +36,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--cuda", default="0", help="The GPU ID")
-    parser.add_argument("--model_path", default="Test_EV_Gait_3DGraph.pkl", help="The GPU ID")
+    parser.add_argument("--model_path", default="Test_EV_Gait_3DGraph.pkl")
     args = parser.parse_args()
     torch.multiprocessing.set_sharing_strategy('file_system')
     torch.backends.cudnn.benchmark = False
