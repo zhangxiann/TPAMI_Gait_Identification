@@ -71,7 +71,7 @@ class Net(torch.nn.Module):
         x = x[0].view(-1, self.fc1.weight.size(1))
         x = self.fc1(x)
         x = self.bn(x)
-        x = F.elu()
+        x = F.elu(x)
         x = self.drop_out(x)
         x = self.fc2(x)
         return F.log_softmax(x, dim=1)
