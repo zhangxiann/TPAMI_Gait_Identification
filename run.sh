@@ -10,3 +10,8 @@ nohup python -u train_3d_graph.py --epoch 150 --cuda 1 > train_3d_graph.log 2>&1
 nohup python -u train_3d_graph.py --epoch 150 --cuda 1 > train_3d_graph_no_polarity.log 2>&1 &
 
 
+du -lh --max-depth=1 -lh ~/Disk1  | sort -n
+
+
+df -h ~/Disk1
+
