@@ -14,19 +14,29 @@ In this paper, We propose new event-based gait recognition approaches basing on 
 
 If you use any of this code or data, please cite the following publication:
 
-> @article{wang2021event,
-> 
->     title={Event-Stream Representation for Human Gaits Identification Using Deep Neural Networks},
->   
->     author={Wang, Yanxiang and Zhang, Xian and Shen, Yiran and Du, Bowen and Zhao,     Guangrong and Lizhen, Lizhen Cui Cui and Wen, Hongkai},
->   
->     journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
->   
->     year={2021},
->   
->     publisher={IEEE}
->   
+
+
+> ```
+> @inproceedings{wang2019ev,
+>   title={EV-gait: Event-based robust gait recognition using dynamic vision sensors},
+>   author={Wang, Yanxiang and Du, Bowen and Shen, Yiran and Wu, Kai and Zhao, Guangrong and Sun, Jianguo and Wen, Hongkai},
+>   booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+>   pages={6358--6367},
+>   year={2019}
 > }
+> ```
+
+
+
+> ```
+> @article{wang2021event,
+>  title={Event-Stream Representation for Human Gaits Identification Using Deep Neural Networks},
+>     author={Wang, Yanxiang and Zhang, Xian and Shen, Yiran and Du, Bowen and Zhao,     Guangrong and Lizhen, Lizhen Cui Cui and Wen, Hongkai},
+>    journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+>     year={2021},
+>    publisher={IEEE}
+>    }
+>   ```
 
 
 
@@ -63,7 +73,10 @@ If you use any of this code or data, please cite the following publication:
   pip install -r requirements.txt
   ```
 
-- Install [PyTorch](https://pytorch.org/get-started/locally/), [PyTorch Geometric](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html), [TensorFlow](https://www.tensorflow.org/install) according to their documentation respectively.
+- Install [PyTorch](https://pytorch.org/get-started/locally/), [PyTorch Geometric](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html) according to their documentation respectively.
+
+  - PyTorch: [https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/)
+  - PyTorch Geometric: [https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html)
 
 
 
@@ -81,7 +94,7 @@ we collect two dataset: **DVS128-Gait-Day** and **DVS128-Gait-Night**, which wer
 For each lighting condition, we recruited  20 volunteers to contribute their data in two experiment sessions spanning over a few days. In each session, the participants were asked to repeat walking in front of the DVS128 sensor for 100 times.
 
 - **DVS128-Gait-Day**: [https://drive.google.com/file/d/1i5znP-ozea-r8svMV9mLIJXblbJZqCBL/view?usp=sharing](https://drive.google.com/file/d/1i5znP-ozea-r8svMV9mLIJXblbJZqCBL/view?usp=sharing)
-- **DVS128-Gait-Night**: 
+- **DVS128-Gait-Night**: https://pan.baidu.com/s/1txWR75DaAOyva6oUOJ4Kbg , extraction code: **iypf**
 
 
 
@@ -96,17 +109,18 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
   >
   > 2. go to `matlab_downsample`
   >
-  > 3. execute `main.m`
+  > 3. run `main.m`
 
 - generate graph representation for event:
 
   ```
-  python generate_graph/mat2graph.py
+  cd generate_graph
+  python mat2graph.py
   ```
-  
 
   
-- Download the pretrained model:
+  
+- Download the pretrained model to the `trained_model` folder:
 
   ```
   
@@ -118,7 +132,7 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
 - run gait recognition with the pretrained model:
 
   ```
-  
+  python test_3d_graph.py --model_path EV_Gait_3DGraph(94.25).pkl
   ```
 
 - train from scratch:

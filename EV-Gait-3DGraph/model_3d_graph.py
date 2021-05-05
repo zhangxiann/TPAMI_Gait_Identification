@@ -68,7 +68,7 @@ class Net(torch.nn.Module):
 
         # if your torch-geometric version is below 1.3.2(roughly, we do not test all versions), use x.view() instead of x[0].view()
         # x = x.view(-1, self.fc1.weight.size(1))
-        x = x.view(-1, self.fc1.weight.size(1))
+        x = x[0].view(-1, self.fc1.weight.size(1))
         x = self.fc1(x)
         x = F.elu(x)
         x = self.bn(x)
