@@ -137,8 +137,12 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
 
   ```
   cd EV-Gait-3DGraph
-  python test_3d_graph.py --model_path EV_Gait_3DGraph.pkl
+  python test_3d_graph.py --model_name EV_Gait_3DGraph.pkl
   ```
+
+  option `--model_name` refers to the specified pretrained model name.
+
+  
 
 - train EV-Gait-3DGraph from scratch:
 
@@ -180,21 +184,50 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
   - EV_Gait_IMG_time_only_two_channel.pkl
   - EV_Gait_IMG_counts_and_time_two_channel.pkl
 
-  
+
 
 - run EV-Gait-IMG model with the pretrained model:
 
-  ```
-  python -u test_gait_cnn.py --img_type counts_only_two_channel --model_path EV_Gait_IMG_counts_only_two_channel.pkl
-  ```
+  We provide  four options for `--img_type` to correctly test the corresponding  image-like representation
 
+  - `four_channel` : All four channels are considered, which is the original setup of the image-like representation
+
+    ```
+    python -u test_gait_cnn.py --img_type counts_only_two_channel --model_name EV_Gait_IMG_counts_only_two_channel.pkl
+    ```
+
+    
+    
+  - `counts_only_two_channel` : Only the two channels accommodating the counts of positive or negative events are kept
+  
+    ```
+    python test_gait_cnn.py --img_type counts_only_two_channel --model_name EV_Gait_IMG_counts_only_two_channel.pkl
+    ```
+  
+    
+  
+  - `time_only_two_channel` : Only the two channels holding temporal characteristics are kept
+  
+    ```
+    python test_gait_cnn.py --img_type counts_and_time_two_channel --model_name EV_Gait_IMG_counts_and_time_two_channel.pkl
+    ```
+  
+    
+  
+  - `counts_and_time_two_channel` : The polarity of the events is removed
+  
+    ```
+    python test_gait_cnn.py --img_type time_only_two_channel --model_name EV_Gait_IMG_time_only_two_channel.pkl
+    ```
+  
+  option `--model_name` refers to the specified pretrained model name.
 
 
 
 - train EV-Gait-IMG from scratch:
 
   ```
-  nohup python -u train_gait_cnn.py --epoch 100 --cuda 0 > train_gait_cnn.log 2>&1 &
+  nohup python -u train_gait_cnn.py --img_type counts_only_two_channel --epoch 50 --cuda 1 --batch_size 128 > counts_only_two_channel.log 2>&1 &
   ```
 
   > parameters of **train_3d_graph.py**
