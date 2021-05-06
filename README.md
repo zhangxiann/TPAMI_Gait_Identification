@@ -192,7 +192,7 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
   - `four_channel` : All four channels are considered, which is the original setup of the image-like representation
 
     ```
-    python -u test_gait_cnn.py --img_type counts_only_two_channel --model_name EV_Gait_IMG_counts_only_two_channel.pkl
+    python -u test_gait_cnn.py --img_type four_channel --model_name EV_Gait_IMG_four_channel.pkl
     ```
 
     
@@ -208,7 +208,7 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
   - `time_only_two_channel` : Only the two channels holding temporal characteristics are kept
   
     ```
-    python test_gait_cnn.py --img_type counts_and_time_two_channel --model_name EV_Gait_IMG_counts_and_time_two_channel.pkl
+    python test_gait_cnn.py --img_type time_only_two_channel --model_name EV_Gait_IMG_time_only_two_channel.pkl
     ```
   
     
@@ -216,7 +216,7 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
   - `counts_and_time_two_channel` : The polarity of the events is removed
   
     ```
-    python test_gait_cnn.py --img_type time_only_two_channel --model_name EV_Gait_IMG_time_only_two_channel.pkl
+    python test_gait_cnn.py --img_type counts_and_time_two_channel --model_name EV_Gait_IMG_counts_and_time_two_channel.pkl
     ```
   
   The parameter `--model_name` refers to the downloaded pretrained model name.
