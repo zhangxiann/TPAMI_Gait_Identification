@@ -22,7 +22,7 @@ parser.add_argument(
 )
 
 parser.add_argument("--epoch", default=50, type=int, help="The number of epochs")
-parser.add_argument("--batch_size", default=512, type=int, help="batch size")
+parser.add_argument("--batch_size", default=256, type=int, help="batch size")
 parser.add_argument("--cuda", default="0", help="The GPU ID")
 
 args = parser.parse_args()
@@ -71,7 +71,7 @@ for epoch in range(1, args.epoch):
     logging.info("Epoch: {} Acc: {}".format(epoch, float(correct) / total))
 
 
-    if epoch>(args.epoch*0.3):
+    if epoch>(args.epoch*0.1):
         model.eval()
         correct = 0
         total = 0
@@ -87,7 +87,7 @@ for epoch in range(1, args.epoch):
         if float(correct) / total > best_acc:
             best_acc = float(correct) / total
             best_epoch = epoch
-            torch.save(model.state_dict(), os.path.join(Config.cnn_model_path.format(args.img_type, epoch)))
+            torch.save(model.state_dict(), os.path.join(Config.cnn_model_name.format(args.img_type, epoch)))
 
         logging.info("test acc is {}".format(float(correct) / total))
         print("test acc is {}".format(float(correct) / total))

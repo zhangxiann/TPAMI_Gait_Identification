@@ -19,10 +19,9 @@ parser.add_argument(
     "--img_type", default='four_channel', help="The num of event image channels"
 )
 
-parser.add_argument("--epoch", default=50, type=int, help="The number of epochs")
 parser.add_argument("--batch_size", default=512, type=int, help="batch size")
 parser.add_argument("--cuda", default="0", help="The GPU ID")
-parser.add_argument("--model_path", default="EV_Gait_IMG_counts_only_two_channel.pkl")
+parser.add_argument("--model_name", default="EV_Gait_IMG_counts_only_two_channel.pkl")
 
 args = parser.parse_args()
 img_type_dict={
@@ -38,7 +37,7 @@ logging.basicConfig(filename=Config.cnn_train_log_path.format(args.img_type), le
 
 model = Net(img_type_dict[args.img_type]['channel_num'])
 model = model.to(device)
-model.load_state_dict(torch.load(os.path.join(Config.model_dir, args.model_path)))
+model.load_state_dict(torch.load(os.path.join(Config.model_dir, args.model_name)))
 
 test_dataset = EV_Gait_IMG_DATASET(os.path.join(Config.image_dir, img_type_dict[args.img_type]['file']), train=False)
 test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, num_workers=0, shuffle=True)

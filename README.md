@@ -63,15 +63,18 @@ If you use any of this code or data, please cite the following publication:
   conda activate gait
   ```
 
+- install the packages
+
+  ```
+  pip install tqdm
+  pip install scipy
+  pip install h5py
+  pip install argparse
+  pip install numpy
+  pip install itertools
+  ```
+
   
-
-- Then clone the repository and install the dependencies with pip:
-
-  ```
-  git clone https://github.com/zhangxiann/TPAMI_Gait_Identification.git
-  cd TPAMI_Gait_Identification
-  pip install -r requirements.txt
-  ```
 
 - Install [PyTorch](https://pytorch.org/get-started/locally/), [PyTorch Geometric](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html) according to their documentation respectively.
 
@@ -82,10 +85,10 @@ If you use any of this code or data, please cite the following publication:
 
 ## Data
 
-We use both data collected in real-world experiments(called **DVS128-Gait**) and converted from publicly available RGB gait databases(called **EV-CASIA-B**).
+We use both data collected in real-world experiments(called **DVS128-Gait**) and converted from publicly available RGB gait databases(called **EV-CASIA-B**). Here we offer the code and data for the **DVS128-Gait**.
 
 
-### DVS128-Gait
+### DVS128-Gait DATASET
 
 we use a [DVS128 Dynamic Vision Sensor](https://inivation.com/support/hardware/dvs128/) from iniVation operating at 128*128 pixel resolution.
 
@@ -100,16 +103,20 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
 
 ## Run EV-Gait-3DGraph
 
-- download **DVS128-Gait-Day** dataset to the `data` folder, you will get **DVS128-Gait-Day.zip**, and unzip it in the `data` folder.
+- download **DVS128-Gait-Day** dataset to the `data` folder, you will get **DVS128-Gait-Day.zip**, and unzip it to the `data/origin/` folder.
 
 
 - event downsample using matlab:
 
   > 1. open Matlab
+  >2. go to `matlab_downsample`
+  > 3. run `main.m`. This will generate the `data/downsample` folder which contains the non-uniform octreeGrid filtering data .
+  
+- > or directly download the downsampled data from this link:
   >
-  > 2. go to `matlab_downsample`
+  > https://pan.baidu.com/s/1OKKvrhid929DakSxsjT7XA , extraction code: **ceb1** 
   >
-  > 3. run `main.m`
+  > Then unzip it to the `data/downsample` folder.
 
 - generate graph representation for event:
 
@@ -122,27 +129,32 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
   
 - Download the pretrained model to the `trained_model` folder:
 
-  ```
+  https://pan.baidu.com/s/12VfTi5GsgKQrMoIU018NRg , extraction code: **ewzz**
   
-  ```
 
 
-
-
-- run gait recognition with the pretrained model:
+- run EV-Gait-3DGraph model with the pretrained model:
 
   ```
-  python test_3d_graph.py --model_path EV_Gait_3DGraph(94.25).pkl
+  cd EV-Gait-3DGraph
+  python test_3d_graph.py --model_path EV_Gait_3DGraph.pkl
   ```
 
-- train from scratch:
+- train EV-Gait-3DGraph from scratch:
 
   ```
-  nohup python -u EV-Gait-3DGraph/train_3d_graph.py --epoch 80 --cuda 0 > train_3d_graph.log 2>&1 
+  cd EV-Gait-3DGraph
+  nohup python -u train_3d_graph.py --epoch 80 --cuda 0 > train_3d_graph.log 2>&1 
   &
   ```
   
   the traning log would be created at `log/train.log`.
+  
+  > parameters of **train_3d_graph.py**
+  >
+  > - --batch_size: default `16`
+  > - --epoch: number of iterations, default `150`
+  > - --cuda: specify the cuda device to use, default `0`
 
 
 
@@ -150,9 +162,49 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
 
 ## Run EV-Gait-IMG
 
+- generate the image-like representation
+
+  ```
+  cd EV-Gait-IMG
+  python make_hdf5.py
+  ```
+
+- Download the pretrained model to the `trained_model` folder:
+
+  https://pan.baidu.com/s/1xNbYUYYVPTwwjXeQABjmUw , extraction code: **g5k2** 
+
+  we provide four well trained model for four image-like representations presented in the paper.
+
+  - EV_Gait_IMG_four_channel.pkl
+  - EV_Gait_IMG_counts_only_two_channel.pkl
+  - EV_Gait_IMG_time_only_two_channel.pkl
+  - EV_Gait_IMG_counts_and_time_two_channel.pkl
+
+  
+
+- run EV-Gait-IMG model with the pretrained model:
+
+  ```
+  python -u test_gait_cnn.py --img_type counts_only_two_channel --model_path EV_Gait_IMG_counts_only_two_channel.pkl
+  ```
 
 
-```
-nohup python -u train_gait_cnn.py --epoch 100 --cuda 0 > train_gait_cnn.log 2>&1 &
-```
+
+
+- train EV-Gait-IMG from scratch:
+
+  ```
+  nohup python -u train_gait_cnn.py --epoch 100 --cuda 0 > train_gait_cnn.log 2>&1 &
+  ```
+
+  > parameters of **train_3d_graph.py**
+  >
+  > - --batch_size: default `128`
+  > - --epoch: number of iterations, default `50`
+  > - --cuda: specify the cuda device to use, default `0`
+  > - --img_type: specify the type of image-like representation to train the cnn. Four options are provided according to the paper.
+  >   - `four_channel` : All four channels are considered, which is the original setup of the image-like representation
+  >   - `counts_only_two_channel` : Only the two channels accommodating the counts of positive or negative events are kept.
+  >   - `time_only_two_channel` : Only the two channels holding temporal characteristics are kept.
+  >   - `counts_and_time_two_channel` : The polarity of the events is removed.
 

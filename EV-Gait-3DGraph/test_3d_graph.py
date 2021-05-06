@@ -36,7 +36,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--cuda", default="0", help="The GPU ID")
-    parser.add_argument("--model_path", default="Test_EV_Gait_3DGraph.pkl")
+    parser.add_argument("--model_name", default="Test_EV_Gait_3DGraph.pkl")
     args = parser.parse_args()
     torch.multiprocessing.set_sharing_strategy('file_system')
     torch.backends.cudnn.benchmark = False
@@ -46,7 +46,7 @@ if __name__ == '__main__':
 
     model = Net()
     model = model.to(device)
-    model.load_state_dict(torch.load(os.path.join(Config.model_dir, args.model_path)))
+    model.load_state_dict(torch.load(os.path.join(Config.model_dir, args.model_name)))
     test_data_aug = T.Compose([T.Cartesian(cat=False), T.RandomScale([0.99999, 1])])
     # test_data_aug = T.Compose([T.Cartesian(cat=False)])
     test_dataset = EV_Gait_3DGraph_Dataset(

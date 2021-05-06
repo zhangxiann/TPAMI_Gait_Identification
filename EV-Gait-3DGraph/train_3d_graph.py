@@ -39,6 +39,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--cuda", default="0", help="The GPU ID")
     parser.add_argument("--epoch", default=150, type=int, help="The GPU ID")
+    parser.add_argument("--batch_size", default=16, type=int, help="batch size")
     args = parser.parse_args()
     torch.multiprocessing.set_sharing_strategy('file_system')
     torch.backends.cudnn.benchmark = False
@@ -55,14 +56,14 @@ if __name__ == '__main__':
     train_dataset = EV_Gait_3DGraph_Dataset(
         Config.graph_train_dir, transform=train_data_aug
     )
-    train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True, num_workers=2, pin_memory=True)
+    train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=2, pin_memory=True)
 
     test_data_aug = T.Compose([T.Cartesian(cat=False), T.RandomScale([0.999, 1])])
     # test_data_aug = T.Compose([T.Cartesian(cat=False)])
     test_dataset = EV_Gait_3DGraph_Dataset(
         Config.graph_test_dir, transform=test_data_aug
     )
-    test_loader = DataLoader(test_dataset, batch_size=16, num_workers=2, pin_memory=True)
+    test_loader = DataLoader(test_dataset, batch_size=args.batch_size, num_workers=2, pin_memory=True)
 
     # train
     best_acc = 0
@@ -114,7 +115,7 @@ if __name__ == '__main__':
             if float(correct) / total > best_acc:
                 best_acc = float(correct) / total
                 best_epoch = epoch
-                torch.save(model.state_dict(), Config.gcn_model_path.format(epoch))
+                torch.save(model.state_dict(), Config.gcn_model_name.format(epoch))
     logging.info("best acc is {}".format(best_acc))
     logging.info("best epoch is {}".format(best_epoch))
     print("best epoch is {}".format(best_epoch))
