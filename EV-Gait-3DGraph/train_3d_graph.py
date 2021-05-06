@@ -66,8 +66,7 @@ if __name__ == '__main__':
     test_loader = DataLoader(test_dataset, batch_size=args.batch_size, num_workers=2, pin_memory=True)
 
     # train
-    best_acc = 0
-    best_epoch = 0
+
     for epoch in range(1, args.epoch):
         model.train()
 
@@ -96,27 +95,6 @@ if __name__ == '__main__':
         print("epoch: {}, train acc is {}".format(epoch, float(correct) / total))
 
 
-        # test
-        if epoch > (args.epoch*0.5):
-            model.eval()
-            correct = 0
-            total = 0
 
-            for index, data in enumerate(tqdm(test_loader)):
-                data = data.to(device)
-                end_point = model(data)
-                pred = end_point.max(1)[1]
-                total += len(data.y)
-                correct += pred.eq(data.y).sum().item()
+    torch.save(model.state_dict(), Config.gcn_model_name.format(epoch))
 
-            logging.info("test acc is {}".format(float(correct) / total))
-            print("test acc is {}".format(float(correct) / total))
-
-            if float(correct) / total > best_acc:
-                best_acc = float(correct) / total
-                best_epoch = epoch
-                torch.save(model.state_dict(), Config.gcn_model_name.format(epoch))
-    logging.info("best acc is {}".format(best_acc))
-    logging.info("best epoch is {}".format(best_epoch))
-    print("best epoch is {}".format(best_epoch))
-    print("best acc is {}".format(best_acc))

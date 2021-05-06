@@ -96,7 +96,7 @@ we collect two dataset: **DVS128-Gait-Day** and **DVS128-Gait-Night**, which wer
 
 For each lighting condition, we recruited  20 volunteers to contribute their data in two experiment sessions spanning over a few days. In each session, the participants were asked to repeat walking in front of the DVS128 sensor for 100 times.
 
-- **DVS128-Gait-Day**: [https://drive.google.com/file/d/1i5znP-ozea-r8svMV9mLIJXblbJZqCBL/view?usp=sharing](https://drive.google.com/file/d/1i5znP-ozea-r8svMV9mLIJXblbJZqCBL/view?usp=sharing)
+- **DVS128-Gait-Day**: https://pan.baidu.com/s/1F3Uo-fVy1S7n5plmEXFl4w , extraction code: **mk55**
 - **DVS128-Gait-Night**: https://pan.baidu.com/s/1txWR75DaAOyva6oUOJ4Kbg , extraction code: **iypf**
 
 
@@ -129,8 +129,7 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
   
 - Download the pretrained model to the `trained_model` folder:
 
-  https://pan.baidu.com/s/12VfTi5GsgKQrMoIU018NRg , extraction code: **ewzz**
-  
+  https://pan.baidu.com/s/1sVwbiiAZfVnFDNTV1HyEAw , extraction code: **o2w2** 
 
 
 - run EV-Gait-3DGraph model with the pretrained model:
@@ -140,7 +139,7 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
   python test_3d_graph.py --model_name EV_Gait_3DGraph.pkl
   ```
 
-  option `--model_name` refers to the specified pretrained model name.
+  The parameter`--model_name` refers to the downloaded pretrained model name.
 
   
 
@@ -220,7 +219,7 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
     python test_gait_cnn.py --img_type time_only_two_channel --model_name EV_Gait_IMG_time_only_two_channel.pkl
     ```
   
-  option `--model_name` refers to the specified pretrained model name.
+  The parameter `--model_name` refers to the downloaded pretrained model name.
 
 
 

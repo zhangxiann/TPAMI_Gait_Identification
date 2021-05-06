@@ -47,8 +47,7 @@ test_dataset = EV_Gait_IMG_DATASET(os.path.join(Config.image_dir, img_type_dict[
 test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, num_workers=0, shuffle=True)
 
 
-best_acc = 0.0
-best_epoch = 0
+
 for epoch in range(1, args.epoch):
     model.train()
     correct = 0
@@ -71,28 +70,5 @@ for epoch in range(1, args.epoch):
     logging.info("Epoch: {} Acc: {}".format(epoch, float(correct) / total))
 
 
-    if epoch>(args.epoch*0.1):
-        model.eval()
-        correct = 0
-        total = 0
-        for index, data in enumerate(test_dataloader):
-            input, label = data
-            input = input.transpose(1, 3).float()
-            input = input.to(device)
-            label = label.to(device)
-            end_point = model(input)
-            pred = end_point.max(1)[1]
-            total += len(label)
-            correct += pred.eq(label).sum().item()
-        if float(correct) / total > best_acc:
-            best_acc = float(correct) / total
-            best_epoch = epoch
-            torch.save(model.state_dict(), os.path.join(Config.cnn_model_name.format(args.img_type, epoch)))
 
-        logging.info("test acc is {}".format(float(correct) / total))
-        print("test acc is {}".format(float(correct) / total))
-
-logging.info("best acc is {}".format(best_acc))
-logging.info("best epoch is {}".format(best_epoch))
-print("best epoch is {}".format(best_epoch))
-print("best acc is {}".format(best_acc))
+    torch.save(model.state_dict(), os.path.join(Config.cnn_model_name.format(args.img_type, epoch)))
