@@ -39,7 +39,7 @@ function [down_data] = downsample(data, max_points)
 	% iterate pos(index)
 	for i = pos
 		% add event to down_data
-		down_data = [down_data; x(i), y(i), time(i), p(i)];
+		down_data = [down_data; time(i), x(i), y(i), p(i)];
 		%     down_data = [down_data; time(i), x(i), y(i), p(i)];
 	end
 end
