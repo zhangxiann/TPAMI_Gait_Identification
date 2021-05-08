@@ -38,8 +38,8 @@ def calculate_edges(data, r=5):
         distance_matrix[:, 1:3] = distance_matrix[:, 1:3] - points[i, 1:3]
         distance_matrix[:, 0] = distance_matrix[:, 0] - points[i, 0]
         distance_matrix = np.square(distance_matrix)
-        distance_matrix[:, 1:3] *= alpha
-        distance_matrix[:, 0] *= beta
+        distance_matrix[:, 0] *= alpha
+        distance_matrix[:, 1:3] *= beta
         # calculate the distance of each pair of events
         distance = np.sqrt(np.sum(distance_matrix, axis=1))
         index = np.where(distance <= r)
