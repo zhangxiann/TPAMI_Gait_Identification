@@ -83,12 +83,12 @@ If you use any of this code or data, please cite the following publication:
 
 
 
-## Data
+# Data
 
 We use both data collected in real-world experiments(called **DVS128-Gait**) and converted from publicly available RGB gait databases(called **EV-CASIA-B**). Here we offer the code and data for the **DVS128-Gait**.
 
 
-### DVS128-Gait DATASET
+## DVS128-Gait DATASET
 
 we use a [DVS128 Dynamic Vision Sensor](https://inivation.com/support/hardware/dvs128/) from iniVation operating at 128*128 pixel resolution.
 
@@ -101,7 +101,7 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
 
 
 
-## Run EV-Gait-3DGraph
+# Run EV-Gait-3DGraph
 
 - download **DVS128-Gait-Day** dataset, you will get **DVS128-Gait-Day** folder which contains train and test data, place **DVS128-Gait-Day** folder to the `data/` folder.
 
@@ -162,7 +162,7 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
 
 
 
-## Run EV-Gait-IMG
+# Run EV-Gait-IMG
 
 - generate the image-like representation
 
