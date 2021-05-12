@@ -129,7 +129,7 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
   
 - Download the pretrained model to the `trained_model` folder:
 
-  https://pan.baidu.com/s/1sVwbiiAZfVnFDNTV1HyEAw , extraction code: **o2w2** 
+  https://pan.baidu.com/s/1X7eytUDWAtKS4bk0rjbs6g , extraction code: **b7z7** 
 
 
 - run EV-Gait-3DGraph model with the pretrained model:
@@ -147,8 +147,7 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
 
   ```
   cd EV-Gait-3DGraph
-  nohup python -u train_3d_graph.py --epoch 100 --cuda 0 > train_3d_graph.log 2>&1 &
-  &
+  nohup python -u train_3d_graph.py --epoch 120 --cuda 0 > train_3d_graph.log 2>&1 &
   ```
   
   the traning log would be created at `log/train.log`.
