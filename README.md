@@ -103,20 +103,20 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
 
 ## Run EV-Gait-3DGraph
 
-- download **DVS128-Gait-Day** dataset, you will get **origin** folder which contains train and test data, place **origin** folder to the `data/origin/`.
+- download **DVS128-Gait-Day** dataset, you will get **DVS128-Gait-Day** folder which contains train and test data, place **DVS128-Gait-Day** folder to the `data/` folder.
 
 
 - event downsample using matlab:
 
   > 1. open Matlab
   >2. go to `matlab_downsample`
-  > 3. run `main.m`. This will generate the `data/downsample` folder which contains the non-uniform octreeGrid filtering data .
+  > 3. run `main.m`. This will generate the `data/DVS128-Gait-Day/downsample` folder which contains the non-uniform octreeGrid filtering data .
   
 - > or directly download the downsampled data from this link:
   >
   > https://pan.baidu.com/s/1OKKvrhid929DakSxsjT7XA , extraction code: **ceb1** 
   >
-  > Then unzip it to the `data/downsample` folder.
+  > Then unzip it to the `data/DVS128-Gait-Day/downsample` folder.
 
 - generate graph representation for event:
 
@@ -147,7 +147,7 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
 
   ```
   cd EV-Gait-3DGraph
-  nohup python -u train_3d_graph.py --epoch 80 --cuda 0 > train_3d_graph.log 2>&1 
+  nohup python -u train_3d_graph.py --epoch 100 --cuda 0 > train_3d_graph.log 2>&1 &
   &
   ```
   
