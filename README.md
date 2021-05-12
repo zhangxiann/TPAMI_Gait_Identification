@@ -118,7 +118,7 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
   >
   > Then unzip it to the `data/DVS128-Gait-Day/downsample` folder.
 
-- generate graph representation for event:
+- generate graph representation for event, the graph data will be generated in `data/DVS128-Gait-Day/graph` folder:
 
   ```
   cd generate_graph
@@ -191,7 +191,7 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
   - `four_channel` : All four channels are considered, which is the original setup of the image-like representation
 
     ```
-    python -u test_gait_cnn.py --img_type four_channel --model_name EV_Gait_IMG_four_channel.pkl
+    python test_gait_cnn.py --img_type four_channel --model_name EV_Gait_IMG_four_channel.pkl
     ```
 
     
