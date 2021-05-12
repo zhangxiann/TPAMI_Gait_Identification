@@ -103,7 +103,7 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
 
 ## Run EV-Gait-3DGraph
 
-- download **DVS128-Gait-Day** dataset to the `data` folder, you will get **DVS128-Gait-Day.zip**, and unzip it to the `data/origin/` folder.
+- download **DVS128-Gait-Day** dataset, you will get **train** and **test** folder, place **train** and **test** folder to the `data/origin/`.
 
 
 - event downsample using matlab:
