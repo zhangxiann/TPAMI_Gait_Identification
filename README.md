@@ -147,7 +147,7 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
 
   ```
   cd EV-Gait-3DGraph
-  nohup python -u train_3d_graph.py --epoch 120 --cuda 0 > train_3d_graph.log 2>&1 &
+  nohup python -u train_3d_graph.py --epoch 80 --cuda 0 > train_3d_graph.log 2>&1 &
   ```
   
   the traning log would be created at `log/train.log`.
@@ -228,7 +228,7 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
   nohup python -u train_gait_cnn.py --img_type counts_only_two_channel --epoch 50 --cuda 1 --batch_size 128 > counts_only_two_channel.log 2>&1 &
   ```
 
-  > parameters of **train_3d_graph.py**
+  > parameters of **test_gait_cnn.py**
   >
   > - --batch_size: default `128`
   > - --epoch: number of iterations, default `50`
