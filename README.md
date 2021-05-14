@@ -147,7 +147,7 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
 
   ```
   cd EV-Gait-3DGraph
-  nohup python -u train_3d_graph.py --epoch 80 --cuda 0 > train_3d_graph.log 2>&1 &
+  nohup python -u train_3d_graph.py --epoch 110 --cuda 0 > train_3d_graph.log 2>&1 &
   ```
   
   the traning log would be created at `log/train.log`.
