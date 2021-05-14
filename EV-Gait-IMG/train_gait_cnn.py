@@ -69,6 +69,23 @@ for epoch in range(1, args.epoch):
         optimizer.step()
     logging.info("Epoch: {} Acc: {}".format(epoch, float(correct) / total))
 
+# test
+model.eval()
+correct = 0
+total = 0
+for index, data in enumerate(test_dataloader):
+    input, label = data
+    input = input.transpose(1, 3).float()
+    input = input.to(device)
+    label = label.to(device)
+    end_point = model(input)
+    pred = end_point.max(1)[1]
+    total += len(label)
+    correct += pred.eq(label).sum().item()
 
 
-    torch.save(model.state_dict(), os.path.join(Config.cnn_model_name.format(args.img_type, epoch)))
+logging.info("test acc is {}".format(float(correct) / total))
+print("test acc is {}".format(float(correct) / total))
+
+
+torch.save(model.state_dict(), os.path.join(Config.cnn_model_name.format(args.img_type, epoch)))

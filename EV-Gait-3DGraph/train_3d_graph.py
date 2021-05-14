@@ -95,6 +95,20 @@ if __name__ == '__main__':
         print("epoch: {}, train acc is {}".format(epoch, float(correct) / total))
 
 
+    # test
+    model.eval()
+    correct = 0
+    total = 0
+
+    for index, data in enumerate(tqdm(test_loader)):
+        data = data.to(device)
+        end_point = model(data)
+        pred = end_point.max(1)[1]
+        total += len(data.y)
+        correct += pred.eq(data.y).sum().item()
+
+    logging.info("test acc is {}".format(float(correct) / total))
+    print("test acc is {}".format(float(correct) / total))
 
     torch.save(model.state_dict(), Config.gcn_model_name.format(epoch))
 
