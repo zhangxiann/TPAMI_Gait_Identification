@@ -97,7 +97,7 @@ we collect two dataset: **DVS128-Gait-Day** and **DVS128-Gait-Night**, which wer
 For each lighting condition, we recruited  20 volunteers to contribute their data in two experiment sessions spanning over a few days. In each session, the participants were asked to repeat walking in front of the DVS128 sensor for 100 times.
 
 - **DVS128-Gait-Day**: https://pan.baidu.com/s/1F3Uo-fVy1S7n5plmEXFl4w , extraction code: **mk55**
-- **DVS128-Gait-Night**: https://pan.baidu.com/s/1txWR75DaAOyva6oUOJ4Kbg , extraction code: **iypf**
+- **DVS128-Gait-Night**: https://pan.baidu.com/s/1vijraYQshlURRqF2I1zE8A , extraction code: **ih83**
 
 
 
