@@ -248,3 +248,5 @@ In particular, we use a Dell 23 inch monitor with resolution 1920X1080 at 60Hz.
 - Download link:
 
   https://pan.baidu.com/s/1QDEiRRi09eIggROk5NxxhA , extraction code: **2ioq** 
+
+For more about `2d graph 3d cnn` and `ev-casia-b`, please visit [https://github.com/zhangxiann/graph_cnn_dvs.git](https://github.com/zhangxiann/graph_cnn_dvs.git) 
