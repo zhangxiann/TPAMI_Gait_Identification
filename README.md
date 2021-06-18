@@ -107,16 +107,17 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
 
 
 - event downsample using matlab:
+  - In Windows:
+    > 1. open Matlab
+    > 2. go to `matlab_downsample`
+    > 3. run `main.m`. This will generate the `data/DVS128-Gait-Day/downsample` folder which contains the non-uniform octreeGrid filtering data .
+  - In Linux, you can use this command: `matlab -nodesktop -nosplash -r "main, exit()"`.
 
-  > 1. open Matlab
-  >2. go to `matlab_downsample`
-  > 3. run `main.m`. This will generate the `data/DVS128-Gait-Day/downsample` folder which contains the non-uniform octreeGrid filtering data .
+- or directly download the downsampled data from this link:
   
-- > or directly download the downsampled data from this link:
-  >
-  > https://pan.baidu.com/s/1OKKvrhid929DakSxsjT7XA , extraction code: **ceb1** 
-  >
-  > Then unzip it to the `data/DVS128-Gait-Day/downsample` folder.
+  https://pan.baidu.com/s/1OKKvrhid929DakSxsjT7XA , extraction code: **ceb1**
+  
+  Then unzip it to the `data/DVS128-Gait-Day/downsample` folder.
 
 - generate graph representation for event, the graph data will be generated in `data/DVS128-Gait-Day/graph` folder:
 
@@ -239,3 +240,11 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
   >   - `time_only_two_channel` : Only the two channels holding temporal characteristics are kept.
   >   - `counts_and_time_two_channel` : The polarity of the events is removed.
 
+## EV-CASIA-B DATASET
+CASIA-B contains data from 124 subjects, each of which has 66 video clips recorded by RGB camera from 11 different view angles (0 to 180), i.e., 6 clips for each angle. The view angle is the relative angle between the view of the camera and walking direction of the subjects. 
+To convert the CASIA-B dataset to event format, we use a similar approach as in and use a DVS128 sensor to record the playbacks of the video clips on screen. 
+In particular, we use a Dell 23 inch monitor with resolution 1920X1080 at 60Hz.
+
+- Download link:
+
+  https://pan.baidu.com/s/1QDEiRRi09eIggROk5NxxhA , extraction code: **2ioq** 
