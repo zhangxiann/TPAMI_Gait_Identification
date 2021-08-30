@@ -1,8 +1,8 @@
 ## Summary
 
-This is the code for the paper **Event-Stream Representation for Human Gaits Identification Using Deep Neural Networks** by Yanxiang Wang, [Xian Zhang](https://blog.zhangxiann.com/), [Yiran Shen*](http://yiranshen.academic.site/), [Bowen Du](https://scholar.google.com/citations?user=AqK633EAAAAJ), Guangrong Zhao, Lizhen Cui Cui Lizhen, Hongkai Wen.
+This is the code for the paper **Event-Stream Representation for Human Gaits Identification Using Deep Neural Networks** by Yanxiang Wang, [Xian Zhang](https://blog.zhangxiann.com/), [Yiran Shen*](http://yiranshen.academic.site/), [Bowen Du](https://scholar.google.com/citations?user=AqK633EAAAAJ), Guangrong Zhao, Lizhen Cui, Hongkai Wen.
 
-The paper can be found [here](http://academic0202101180gpyi.images.academic.site/eventstream%20representation%20early%20access%20version.pdf).
+The paper can be found [here](https://ieeexplore.ieee.org/abstract/document/9337225).
 
 
 
