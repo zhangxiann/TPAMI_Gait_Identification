@@ -105,6 +105,41 @@ For each lighting condition, we recruited  20 volunteers to contribute their dat
 
 - download **DVS128-Gait-Day** dataset, you will get **DVS128-Gait-Day** folder which contains train and test data, place **DVS128-Gait-Day** folder to the `data/` folder.
 
+  The file structure should look like:
+
+  ```
+  data/DVS128-Gait-Day
+  ├── origin
+  │   ├── train
+  │   │   ├── 0
+  │   │   ├── 1
+  │   │   └── ...
+  │   ├── test
+  │   │   ├── 0
+  │   │   └── ...
+  │   └── ...
+  ├── downsample
+  │   ├── train
+  │   │   ├── 0
+  │   │   ├── 1
+  │   │   └── ...
+  │   ├── test
+  │   │   ├── 0
+  │   │   └── ...
+  │   └── ...
+  └── graph
+      ├── train
+      │   ├── 0
+      │   ├── 1
+      │   └── ...
+      ├── test
+      │   ├── 0
+      │   └── ...
+      └── ...
+  ```
+
+  
+
 
 - event downsample using matlab:
   - In Windows:
