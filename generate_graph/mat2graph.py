@@ -53,8 +53,8 @@ def calculate_edges(data, r=5):
                 edges[row_num + 1, 0] = int(id) + i + 1
                 row_num = row_num + 2
                 count = count + 1
-        if count > d:
-            break
+            if count > d:
+                break
     edges = edges[~np.all(edges == 0, axis=1)]
     edges = np.transpose(edges)
     return edges
