@@ -51,6 +51,11 @@ If you use any of this code or data, please cite the following publication:
 - numpy
 - scipy
 - PyTorch Geometric
+  - torch-cluster 1.5.9
+  - torch-geometric 1.7.0
+  - torch-scatter 2.0.6
+  - torch-sparse 0.6.9
+  - torch-spline-conv 1.2.1
 - TensorFlow
 - Matlab (with **Computer Vision Toolbox** and **Image Processing Toolbox** for nonuniform grid downsample)
 
